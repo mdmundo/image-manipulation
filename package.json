@@ -2,11 +2,15 @@
   "name": "image-manipulation",
   "version": "0.0.1",
   "description": "No description",
+  "scripts": {
+    "start": "node index.js"
+  },
   "main": "index.js",
   "author": "Edmundo Paulino <manyymoore@gmail.com>",
   "license": "MIT",
   "private": true,
   "dependencies": {
+    "jimp": "^0.16.1",
     "koa": "^2.13.4"
   }
 }
