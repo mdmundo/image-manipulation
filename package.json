@@ -1,0 +1,12 @@
+{
+  "name": "image-manipulation",
+  "version": "0.0.1",
+  "description": "No description",
+  "main": "index.js",
+  "author": "Edmundo Paulino <manyymoore@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "koa": "^2.13.4"
+  }
+}
