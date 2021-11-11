@@ -9,11 +9,7 @@ const router = new Router();
 app.use(serve("serve"));
 
 router.get("/", (ctx, next) => {
-  ctx.body = "Hello World";
-});
-
-router.get("/original", (ctx, next) => {
-  ctx.redirect("/static/original.png");
+  ctx.redirect("/static/index.html");
 });
 
 router.get("/rotate90", async (ctx, next) => {
@@ -41,14 +37,5 @@ router.get("/rotate270", async (ctx, next) => {
 });
 
 app.use(router.routes()).use(router.allowedMethods());
-
-// app.use(async (ctx) => {
-// Jimp.read("lenna.png", (err, lenna) => {
-//   if (err) throw err;
-//   ctx.body = lenna;
-//   lenna.write("modified.png");
-// });
-// ctx.body = "Hello World";
-// });
 
 app.listen(3000);
