@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "description": "No description",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "main": "index.js",
   "author": "Edmundo Paulino <manyymoore@gmail.com>",
@@ -11,6 +12,11 @@
   "private": true,
   "dependencies": {
     "jimp": "^0.16.1",
-    "koa": "^2.13.4"
+    "koa": "^2.13.4",
+    "koa-router": "^10.1.1",
+    "koa-static": "^5.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
   }
 }

@@ -1,8 +1,54 @@
+const Jimp = require("jimp");
 const Koa = require("koa");
-const app = new Koa();
+const Router = require("koa-router");
+const serve = require("koa-static");
 
-app.use(async (ctx) => {
+const app = new Koa();
+const router = new Router();
+
+app.use(serve("serve"));
+
+router.get("/", (ctx, next) => {
   ctx.body = "Hello World";
 });
+
+router.get("/original", (ctx, next) => {
+  ctx.redirect("/static/original.png");
+});
+
+router.get("/rotate90", async (ctx, next) => {
+  const original = await Jimp.read("serve/static/original.png");
+
+  original.rotate(-90, false).write("serve/static/modified.png");
+
+  ctx.redirect("/static/index.html");
+});
+
+router.get("/rotate180", async (ctx, next) => {
+  const original = await Jimp.read("serve/static/original.png");
+
+  original.rotate(-180, false).write("serve/static/modified.png");
+
+  ctx.redirect("/static/index.html");
+});
+
+router.get("/rotate270", async (ctx, next) => {
+  const original = await Jimp.read("serve/static/original.png");
+
+  original.rotate(-270, false).write("serve/static/modified.png");
+
+  ctx.redirect("/static/index.html");
+});
+
+app.use(router.routes()).use(router.allowedMethods());
+
+// app.use(async (ctx) => {
+// Jimp.read("lenna.png", (err, lenna) => {
+//   if (err) throw err;
+//   ctx.body = lenna;
+//   lenna.write("modified.png");
+// });
+// ctx.body = "Hello World";
+// });
 
 app.listen(3000);
